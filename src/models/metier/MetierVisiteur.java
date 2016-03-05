@@ -15,9 +15,7 @@ public class MetierVisiteur {
     private Secteur secNom;
     private Labo labNom;
 
-    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, Secteur secNom, Labo labNom) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     public String getMatricule() {
         return matricule;
@@ -60,7 +58,7 @@ public class MetierVisiteur {
         return labNom;
     }
 
-    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, Secteur secNom, String labCode) {
+    public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, Secteur secNom, Labo labNom) {
         this.matricule = matricule;
         this.nom = nom;
         this.prenom = prenom;

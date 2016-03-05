@@ -31,6 +31,8 @@ public class ControllersVisiteurs implements ActionListener {
         this.vue = vue;
         afficherLesVisiteurs();
         vue.getjButtonOk().addActionListener(this);
+        vue.getjButtonSuivant().addActionListener(this);        
+        vue.getjButtonPrecedent().addActionListener(this);
 
     }
 
@@ -60,11 +62,55 @@ public class ControllersVisiteurs implements ActionListener {
             vue.getjTextFieldNom().setText(unVisiteur.getNom());     
             vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom()); 
             vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse()); 
-            vue.getjTextFieldVille().setText(unVisiteur.getVille()); 
-            vue.getjTextFieldSecteur().setText(unVisiteur.getSecNom().getSec_libelle()); 
-            vue.getjTextFieldLabo().setText(unVisiteur.getLabNom().toString());            
-        
-      }
-        
+            vue.getjTextFieldVille().setText(unVisiteur.getVille());   
+            
+            vue.getjTextFieldSecteur().setText("");                 
+            vue.getjTextFieldLabo().setText(""); 
+            vue.getjTextFieldSecteur().setText(unVisiteur.getSecNom().getSec_libelle());                 
+            vue.getjTextFieldLabo().setText(unVisiteur.getLabNom().getLab_nom());         
+       }
+       
+       if (source ==  vue.getjButtonSuivant()) {
+           int i = vue.getjComboBoxListeVisiteurs().getSelectedIndex();
+           int z = i+1;
+           if (z < vue.getjComboBoxListeVisiteurs().getItemCount()) {                
+                unVisiteur = (MetierVisiteur) vue.getjComboBoxListeVisiteurs().getItemAt(z);
+                vue.getjComboBoxListeVisiteurs().setSelectedIndex(z);
+                vue.getjTextFieldNom().setText(unVisiteur.getNom());     
+                vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom()); 
+                vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse()); 
+                vue.getjTextFieldVille().setText(unVisiteur.getVille());   
+
+                vue.getjTextFieldSecteur().setText("");                 
+                vue.getjTextFieldLabo().setText(""); 
+                vue.getjTextFieldSecteur().setText(unVisiteur.getSecNom().getSec_libelle());                 
+                vue.getjTextFieldLabo().setText(unVisiteur.getLabNom().getLab_nom());                
+                
+           }
+                
+       }
+       
+        if (source ==  vue.getjButtonPrecedent()) {
+           int i = vue.getjComboBoxListeVisiteurs().getSelectedIndex();
+           int z = i-1;
+           if (z >= 0) {                
+                unVisiteur = (MetierVisiteur) vue.getjComboBoxListeVisiteurs().getItemAt(z);
+                vue.getjComboBoxListeVisiteurs().setSelectedIndex(z);
+                vue.getjTextFieldNom().setText(unVisiteur.getNom());     
+                vue.getjTextFieldPrenom().setText(unVisiteur.getPrenom()); 
+                vue.getjTextFieldAdresse().setText(unVisiteur.getAdresse()); 
+                vue.getjTextFieldVille().setText(unVisiteur.getVille());   
+
+                vue.getjTextFieldSecteur().setText("");                 
+                vue.getjTextFieldLabo().setText(""); 
+                vue.getjTextFieldSecteur().setText(unVisiteur.getSecNom().getSec_libelle());                 
+                vue.getjTextFieldLabo().setText(unVisiteur.getLabNom().getLab_nom()); 
+               
+                
+           }
+                
+       }
     }
+        
 }
+

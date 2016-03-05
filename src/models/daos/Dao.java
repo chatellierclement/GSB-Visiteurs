@@ -19,6 +19,7 @@ public class Dao {
       List<MetierVisiteur> lesVisiteurs = new ArrayList<MetierVisiteur>(); 
       MetierVisiteur unVisiteur;
       Secteur unSecteur = null;
+      Labo unLabo = null;
       Connection con = models.Connect.Connection();      
       Statement state = con.createStatement();
       
@@ -35,7 +36,8 @@ public class Dao {
             String secCode = res.getString("SEC_CODE");
             String labCode = res.getString("LAB_CODE");
             unSecteur = DaoSecteur.getNomSecteur(secCode);
-            unVisiteur = new MetierVisiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, labCode);
+            unLabo = DaoLabo.getLabo(labCode);
+            unVisiteur = new MetierVisiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, unLabo);
             lesVisiteurs.add(unVisiteur);
            
         }
@@ -45,13 +47,14 @@ public class Dao {
       
   }
   
-  public static MetierVisiteur getOne(String nom2) throws SQLException, ClassNotFoundException {
+  public static MetierVisiteur getOne(String id) throws SQLException, ClassNotFoundException {
       MetierVisiteur unVisiteur = null;
-      Secteur unSecteur = null;
+      Secteur unSecteur = null;      
+      Labo unLabo = null;
       Connection con = models.Connect.Connection();      
       Statement state = con.createStatement();
       
-      ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_NOM='"+ nom2 +"'");    
+      ResultSet res = state.executeQuery("SELECT * FROM visiteur WHERE VIS_MATRICULE='"+ id +"'");    
       
       while (res.next()) {
             String matricule = res.getString("VIS_MATRICULE");
@@ -64,7 +67,8 @@ public class Dao {
             String secCode = res.getString("SEC_CODE");
             String labCode = res.getString("LAB_CODE");
             unSecteur = DaoSecteur.getNomSecteur(secCode);
-            unVisiteur = new MetierVisiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, labCode);
+            unLabo = DaoLabo.getLabo(labCode);
+            unVisiteur = new MetierVisiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, unLabo);
            
         }
     return unVisiteur;
