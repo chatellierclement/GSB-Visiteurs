@@ -31,6 +31,10 @@ public class DaoLabo {
             unLabo = new Labo(lab_code, lab_nom, lab_chef);
            
       }
+      
+      res.close();
+       state.close();
+       con.close();
     return unLabo;
        
       

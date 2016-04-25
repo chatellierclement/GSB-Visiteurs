@@ -33,6 +33,11 @@ public class DaoSecteur {
             unSecteur = new Secteur(secCode, nom);
            
       }
+      
+      res.close();
+       state.close();
+       con.close();
+       
     return unSecteur;
        
       

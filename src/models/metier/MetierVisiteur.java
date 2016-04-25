@@ -12,8 +12,8 @@ public class MetierVisiteur {
     private String cp;
     private String ville;
     private Date date;
-    private Secteur secNom;
-    private Labo labNom;
+    private Secteur secteur;
+    private Labo labo;
 
     
 
@@ -45,8 +45,8 @@ public class MetierVisiteur {
         return date;
     }
 
-    public Secteur getSecNom() {
-        return secNom;
+    public Secteur getSecteur() {
+        return secteur;
     }
 
     @Override
@@ -54,8 +54,8 @@ public class MetierVisiteur {
         return nom + " " + prenom;
     }
 
-    public Labo getLabNom() {
-        return labNom;
+    public Labo getLabo() {
+        return labo;
     }
 
     public MetierVisiteur(String matricule, String nom, String prenom, String adresse, String cp, String ville, Date date, Secteur secNom, Labo labNom) {
@@ -66,8 +66,8 @@ public class MetierVisiteur {
         this.cp = cp;
         this.ville = ville;
         this.date = date;
-        this.secNom = secNom;
-        this.labNom = labNom;
+        this.secteur = secNom;
+        this.labo = labNom;
     }
     
 }

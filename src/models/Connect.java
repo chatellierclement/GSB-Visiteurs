@@ -9,17 +9,17 @@ import java.sql.Statement;
 public class Connect {
 
   public static Connection Connection() throws SQLException, ClassNotFoundException {
-    
-      /*Class.forName("oracle.jdbc.driver.OracleDriver");
+//    
+//     Class.forName("oracle.jdbc.driver.OracleDriver");
+//      
+//     String url = "jdbc:oracle:thin:@172.15.11.102:1521:orcl";
+//     String user = "ora_2slamppe_eq5";
+//     String password = "equipe05";
       
-      String url = "jdbc:oracle:thin:@172.15.11.102:1521:orcl";
-      String user = "ora_2slamppe_eq5";
-      String password = "equipe05";*/
-      
-      Class.forName("com.mysql.jdbc.Driver");
+    Class.forName("com.mysql.jdbc.Driver");
             
 
-            String url = "jdbc:mysql://localhost:3306/gsb_visiteurs?zeroDateTimeBehavior=convertToNull";
+           String url = "jdbc:mysql://localhost:3306/gsb_visiteurs?zeroDateTimeBehavior=convertToNull";
             String user = "root";
             String password = "";
 

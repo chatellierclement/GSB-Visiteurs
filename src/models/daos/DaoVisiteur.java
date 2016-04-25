@@ -13,7 +13,7 @@ import models.metier.Labo;
 import models.metier.MetierVisiteur;
 import models.metier.Secteur;
 
-public class Dao {
+public class DaoVisiteur {
     
   public static List<MetierVisiteur> getAll() throws SQLException, ClassNotFoundException {         
       List<MetierVisiteur> lesVisiteurs = new ArrayList<MetierVisiteur>(); 
@@ -41,6 +41,10 @@ public class Dao {
             lesVisiteurs.add(unVisiteur);
            
         }
+      
+      res.close();
+       state.close();
+       con.close();
     return lesVisiteurs;
        
       
@@ -71,6 +75,11 @@ public class Dao {
             unVisiteur = new MetierVisiteur(matricule, nom, prenom, adresse, cp, ville, date, unSecteur, unLabo);
            
         }
+      
+      res.close();
+       state.close();
+       con.close();
+       
     return unVisiteur;
        
       
