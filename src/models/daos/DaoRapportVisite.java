@@ -6,10 +6,11 @@
 package models.daos;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import models.Connect;
@@ -83,10 +84,12 @@ public class DaoRapportVisite {
         
     }
     
-    public static void insertRapport(String numRapport, String login, String id, String motif, String date, String bilan) throws SQLException, ClassNotFoundException {
+    public static void insertRapport(String numRapport, String login, String id, String motif, Date date, String bilan) throws SQLException, ClassNotFoundException {
+       String date2 = new SimpleDateFormat("dd/MM/yyyy").format(date); 
+       String req = "INSERT INTO rapport_visite (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES ('"+login+"','"+numRapport+"','"+id+"',to_date('"+date2+"','dd/mm/yyyy'),'"+bilan+"','"+motif+"')";
        Connection con = models.Connect.Connection();      
        Statement state = con.createStatement();      
-       state.executeUpdate("INSERT INTO rapport_visite (VIS_MATRICULE, RAP_NUM, PRA_NUM, RAP_DATE, RAP_BILAN, RAP_MOTIF) VALUES ('"+login+"','"+numRapport+"','"+id+"','"+date+"','"+bilan+"','"+motif+"')");
+       state.executeUpdate(req);
  
        
        state.close();

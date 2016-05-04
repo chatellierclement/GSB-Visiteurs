@@ -5,7 +5,7 @@
  */
 package models.metier;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *

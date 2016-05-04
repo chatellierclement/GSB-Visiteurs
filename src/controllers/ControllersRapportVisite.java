@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.String.valueOf;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -154,8 +155,8 @@ public class ControllersRapportVisite implements ActionListener {
                 unPracticien = (Praticien) vue.getjComboBoxPracticien().getSelectedItem();
                 String numRapport = vue.getjTextFieldNumRapport().getText();
                 String id = unPracticien.getMatricule();
-                Date date = vue.getjDateChooser1().getDate();
-                String date2 = new SimpleDateFormat("yyyy-MM-dd").format(date);
+                Date date = vue.getjDateChooser1().getDate(); 
+                System.out.println(date);
                 String motif = vue.getjTextFieldMotif().getText();
                 String bilan = vue.getjTextFieldBilan().getText();
 
@@ -169,9 +170,13 @@ public class ControllersRapportVisite implements ActionListener {
                         }
                     }
                     if (bool == false) {
+                        if (id.isEmpty() || date == null || motif.isEmpty() || bilan.isEmpty()) {                            
+                            JOptionPane.showMessageDialog(vue, "Tous les champs doivent être remplis");
 
-                        DaoRapportVisite.insertRapport(numRapport, login, id, motif, date2, bilan);
-                        JOptionPane.showMessageDialog(vue, "Rapport visite enregistré");
+                        } else {                            
+                            DaoRapportVisite.insertRapport(numRapport, login, id, motif, date, bilan);
+                            JOptionPane.showMessageDialog(vue, "Rapport visite enregistré");
+                        }
                     }
                 } catch (SQLException ex) {
                     Logger.getLogger(ControllersRapportVisite.class.getName()).log(Level.SEVERE, null, ex);
